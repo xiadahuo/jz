@@ -73,7 +73,7 @@ public class Solution {
         ArrayList<Integer> res = new ArrayList<>();
         if(listNode == null) return res;
         ListNode dummy = new ListNode(0);
-        dummy.next = null;
+        dummy.next = null;            //可以省略，默认next指向null
         ListNode cur = listNode;
         while(cur != null){
             ListNode next = cur.next;
