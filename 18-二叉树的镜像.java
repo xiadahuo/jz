@@ -90,3 +90,39 @@ public class Solution {
         }
     }
 }
+
+
+
+/**
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+
+}
+*/
+//非递归实现
+import java.util.*;
+public class Solution {
+    public void Mirror(TreeNode root) {
+        if(root == null) return;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while(cur != null || !stack.isEmpty()){
+            while(cur != null){
+                TreeNode help = cur.left;
+                cur.left = cur.right;
+                cur.right = help;
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode temp = stack.pop();
+            cur = temp.right;
+        }
+    }
+}
