@@ -98,7 +98,7 @@ public class Solution {
     public void helper(TreeNode root, int target, ArrayList<ArrayList<Integer>> res,
                        ArrayList<Integer> temp){
         if(root == null) return;
-        if(target < root.val) return;  //优化剪枝
+        //if(target < root.val) return;  //不能优化剪枝，可能为负数
         temp.add(root.val);
         if(root.left == null && root.right == null && root.val == target){
             res.add(new ArrayList<>(temp));
