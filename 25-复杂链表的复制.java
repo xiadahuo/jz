@@ -14,7 +14,7 @@ public class Solution {
     {
         if(pHead == null) return null;
         RandomListNode cur = pHead;
-        while(cur != null){ //复制每个节点的值到它后面
+        while(cur != null){ //复制每个节点
             RandomListNode clone = new RandomListNode(cur.label);
             clone.next = cur.next;
             cur.next = clone;
