@@ -39,3 +39,47 @@ public class Solution {
     }
 }
 
+
+
+/*
+public class RandomListNode {
+    int label;
+    RandomListNode next = null;
+    RandomListNode random = null;
+
+    RandomListNode(int label) {
+        this.label = label;
+    }
+}
+*/
+import java.util.*;
+public class Solution {
+    public RandomListNode Clone(RandomListNode pHead)
+    {
+        if(pHead == null) return null;
+        Map<RandomListNode, RandomListNode> map = new HashMap<>();
+        RandomListNode cur = pHead;
+        
+        while(cur != null){
+            map.put(cur, new RandomListNode(cur.label));
+            cur = cur.next;
+        }
+        cur = pHead;
+        RandomListNode cloneHead = map.get(cur);
+        while(cur != null){
+            RandomListNode clone = map.get(cur);
+            clone.next = map.get(cur.next);
+            clone.random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return cloneHead;
+    }
+}
+
+
+
+
+
+
+
+
