@@ -24,6 +24,36 @@ public class Solution {
     }
 }
 
+//先序递归
+/**
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+
+}
+*/
+public class Solution {
+    public void Mirror(TreeNode root) {
+        preOrder(root);
+    }
+    public void preOrder(TreeNode root){
+        if(root == null) return;
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+}
+
+
+
 
 
 
