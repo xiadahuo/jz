@@ -59,3 +59,51 @@ public class Solution {
         c[j] = temp;
     }
 }
+
+
+//字典序法
+import java.util.*;
+public class Solution {
+    public ArrayList<String> Permutation(String str) {
+       ArrayList<String> res = new ArrayList<>();
+        if(str == null || str.length() == 0) return res;
+        char[] chars = str.toCharArray();
+        Arrays.sort(chars);
+        res.add(new String(chars));
+        int len = str.length();
+        while(true){
+            int l = len-1; // l-1表示从右边往左，第一个小于右边元素的index
+            while(l > 0 && chars[l-1] >= chars[l])
+                l--;
+            if(l == 0) break;
+            int r = len-1;
+            while(r > l && chars[r] <= chars[l-1]) //r表示从右到左第一个比l-1大的数字
+                r--;
+            swap(chars, l-1, r); //交换l-1 和 r 位置的字母
+            reverse(chars,l);     //将l-1后的数字逆序
+            res.add(new String(chars));
+        }
+        return res;
+    }
+    public void swap(char[] chars, int i, int j){
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
+    public void reverse(char[] chars, int l){
+        int r = chars.length-1;
+        while(l < r){
+            char temp = chars[l];
+            chars[l] = chars[r];
+            chars[r] = temp;
+            l++;
+            r--;
+        }
+    }
+}
+
+
+
+
+
+
