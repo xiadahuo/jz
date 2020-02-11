@@ -2,29 +2,16 @@ import java.util.*;
 public class Solution {
     public int MoreThanHalfNum_Solution(int [] array) {
         if(array == null || array.length == 0) return 0;
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < array.length; i++){
-            if(!map.containsKey(array[i])){
-                map.put(array[i],1);
-            }else{
+            if(map.containsKey(array[i])){
                 map.put(array[i],map.get(array[i])+1);
+            }else{
+                map.put(array[i], 1);
             }
+            if(map.get(array[i]) > array.length/2) return array[i];
         }
-        Iterator<Map.Entry<Integer,Integer>> it = map.entrySet().iterator();
-        int max = -1;
-        Map.Entry<Integer, Integer> res = null;
-        while(it.hasNext()){
-            Map.Entry<Integer,Integer> entry = it.next();
-            if(entry.getValue() > max){
-                max = entry.getValue();
-                res = entry;
-            }
-        }
-        if(max > array.length/2){
-            return res.getKey();
-        }else{
-            return 0;
-        }
+        return 0;
     }
 }
 
