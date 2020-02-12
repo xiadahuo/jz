@@ -62,6 +62,61 @@ public class Solution {
 }
 
 
+//创建一个大小为k的堆
+import java.util.*;
+public class Solution {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if(input == null || input.length == 0 || k <= 0 || k > input.length)
+            return res;
+        if(k == input.length){
+            for(int i = 0; i < input.length; i++)
+                res.add(input[i]);
+            return res;
+        }
+        int[] heap = new int[k];
+        for(int i = 0; i < k; i++){ //初始化
+            heap[i] = input[i];
+        }
+        for(int i = 0; i < k; i++){ //调整堆
+            heapInsert(heap,i);
+        }
+        for(int i = k; i < input.length; i++){
+            if(input[i]<heap[0])
+                heap[0] = input[i];
+            heapify(heap, 0, k);
+        }
+        for(int i = 0; i < k; i++){
+            res.add(heap[i]);
+        }
+        return res;
+    }
+    public void heapInsert(int[] array, int index){
+        while(array[index] > array[(index-1)/2]){
+            swap(array, index, (index-1)/2);
+            index = (index-1)/2;
+        }
+    }
+    public void heapify(int[] array, int index, int heapSize){
+        int left = index * 2+1;
+        while(left < heapSize){
+            int largest = left+1 < heapSize && array[left+1] > array[left]
+                ? left+1 : left;
+            largest = array[largest] > array[index] ? largest : index;
+            if(largest == index) break;
+            swap(array, largest, index);
+            index = largest;
+            left = index*2+1;
+        }
+    }
+    
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
 
 //强行用自己建的堆
 import java.util.*;
