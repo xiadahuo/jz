@@ -32,8 +32,8 @@ public class Solution {
 }
 
 
-
-//小技巧
+//pHead1 = a+b   pHead2 = c+b
+//a+b+c = c+b+a
 /*
 public class ListNode {
     int val;
