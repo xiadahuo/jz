@@ -3,7 +3,7 @@ public class Solution {
     public ArrayList<ArrayList<Integer> > FindContinuousSequence(int sum) {
        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
        if(sum < 3) return res;
-        for(int i = 1, j = 1, s = 0; i <= sum; i++){
+        for(int i = 1, j = 1, s = 0; i < (sum + 1)/2; i++){
             while(s < sum) s = s + (j++);
             if(s == sum && j-i > 1){
                 ArrayList<Integer> list = new ArrayList<>();
@@ -20,12 +20,13 @@ public class Solution {
 
 
 
+
 import java.util.ArrayList;
 public class Solution {
     public ArrayList<ArrayList<Integer> > FindContinuousSequence(int sum) {
        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
        if(sum < 3) return res;
-        for(int i = 1, j = 1, s = 1; i <= sum; i++){   
+        for(int i = 1, j = 1, s = 1; i <= (sum - 1)/2; i++){   
             while(s < sum) s = s + (++j);
             if(s == sum && j-i > 0){
                 ArrayList<Integer> list = new ArrayList<>();
